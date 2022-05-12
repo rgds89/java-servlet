@@ -1,0 +1,13 @@
+*.prefs
+*.project
+*.classpath
+*.tlog
+*.metadata
+*.sonarlint/
+*.settings/
+**/bin/*
+*.versionsBackup
+**/rebel.xml
+**/.idea/
+**/*.iml
+*.tern*
