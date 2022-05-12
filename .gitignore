@@ -11,3 +11,4 @@
 **/.idea/
 **/*.iml
 *.tern*
+build/*
