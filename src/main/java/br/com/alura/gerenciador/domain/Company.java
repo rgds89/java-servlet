@@ -1,9 +1,12 @@
 package br.com.alura.gerenciador.domain;
 
+import java.util.Date;
+
 public class Company {
 	
 	private Long id;
 	private String name;
+	private Date opendate;
 	
 	public Long getId() {
 		return id;
@@ -16,6 +19,12 @@ public class Company {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Date getOpendate() {
+		return opendate;
+	}
+	public void setOpendate(Date opendate) {
+		this.opendate = opendate;
 	}
 	
 	

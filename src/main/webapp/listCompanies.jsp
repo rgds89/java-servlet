@@ -3,16 +3,18 @@
 <%@ page
 	import="java.util.List, br.com.alura.gerenciador.domain.Company"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Java Standard Taglib</title>
 </head>
 <body>
+	<h4>Lista de sempresas:</h4>
 	<ul>
-		<c:forEach items="${companies}" var="company">
-			<li>${company.name}</li>
+		<c:forEach items="${companies}" var="company">			
+			<li>${company.name} <fmt:formatDate value="${company.opendate}" pattern="dd/MM/yyyy" /></li>
 		</c:forEach>
 	</ul>
 </body>
