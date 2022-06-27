@@ -36,10 +36,9 @@ public class NewCompanyServlet extends HttpServlet {
 			DataBase database = new DataBase();
 
 			database.add(company);
+			
+			response.sendRedirect("listCompanies");
 
-			RequestDispatcher rd = request.getRequestDispatcher("/newCompany.jsp");
-			request.setAttribute("nameCompany", company.getName());
-			rd.forward(request, response);
 		} catch (ParseException e) {
 			throw new ServletException(e);
 		}
