@@ -1,33 +1,34 @@
 package br.com.alura.gerenciador.db;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import br.com.alura.gerenciador.domain.Company;
 
 public class DataBase {
-	
+
 	private static List<Company> companies = new ArrayList<>();
-	
-	static {
-		Company company = new Company();
-		company.setName("Alura");
-		Company company2 =  new Company();
-		company2.setName("Google");
-		Company company3 =  new Company();
-		company3.setName("Caelum");
-		companies.add(company);
-		companies.add(company2);
-		companies.add(company3);
-	}
+	private static Long sequentialKey = 1l;
 
 	public void add(Company company) {
+		company.setId(DataBase.sequentialKey++);
 		companies.add(company);
-		
+
 	}
-	
-	public List<Company> getCompanies(){
+
+	public List<Company> getCompanies() {
 		return DataBase.companies;
+	}
+
+	public void removeCompany(long id) {
+		Iterator<Company> it = companies.iterator();
+		while (it.hasNext()) {
+			Company company = it.next();
+			if (company.getId().equals(id)) {
+				it.remove();
+			}
+		}
 	}
 
 }

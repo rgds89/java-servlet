@@ -4,6 +4,7 @@
 	import="java.util.List, br.com.alura.gerenciador.domain.Company"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<c:url value="/removeCompany?id=" var="removeCompany" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +14,11 @@
 <body>
 	<h4>Lista de sempresas:</h4>
 	<ul>
-		<c:forEach items="${companies}" var="company">			
-			<li>${company.name} <fmt:formatDate value="${company.opendate}" pattern="dd/MM/yyyy" /></li>
+		<c:forEach items="${companies}" var="company">
+			<li>
+				${company.name} <fmt:formatDate value="${company.opendate}" pattern="dd/MM/yyyy" />
+				<a href="${removeCompany}${company.id}">remove</a>
+			</li>
 		</c:forEach>
 	</ul>
 </body>
