@@ -1,7 +1,6 @@
 package br.com.alura.gerenciador.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,33 +14,29 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.db.DataBase;
 import br.com.alura.gerenciador.domain.Company;
 
-@WebServlet("/newCompany")
-public class NewCompanyServlet extends HttpServlet {
+
+
+@WebServlet("/updateCompany")
+public class UpdateCompanyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		try {
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			PrintWriter out = response.getWriter();
+			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+			Long id = Long.valueOf(request.getParameter("id"));
 			String name = request.getParameter("nameCompany");
 			Date openDate = format.parse(request.getParameter("openDate"));
-
-			Company company = new Company();
+			
+			DataBase dataBase = new DataBase();
+			Company company = dataBase.getCompanyById(id);
 			company.setName(name);
 			company.setOpenDate(openDate);
-
-			DataBase database = new DataBase();
-
-			database.add(company);
-			
 			response.sendRedirect("listCompanies");
-
+			
 		} catch (ParseException e) {
 			throw new ServletException(e);
 		}
-
 	}
 
 }

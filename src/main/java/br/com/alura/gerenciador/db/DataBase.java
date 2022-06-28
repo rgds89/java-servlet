@@ -1,6 +1,7 @@
 package br.com.alura.gerenciador.db;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class DataBase {
 		return DataBase.companies;
 	}
 
-	public void removeCompany(long id) {
+	public void removeCompany(Long id) {
 		Iterator<Company> it = companies.iterator();
 		while (it.hasNext()) {
 			Company company = it.next();
@@ -29,6 +30,17 @@ public class DataBase {
 				it.remove();
 			}
 		}
+	}
+
+	public Company getCompanyById(Long id) {
+		Iterator<Company> it = companies.iterator();
+		while (it.hasNext()) {
+			Company company = it.next();
+			if (company.getId().equals(id)) {
+				return company;
+			}
+		}
+		return null;
 	}
 
 }

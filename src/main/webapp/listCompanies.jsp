@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:url value="/removeCompany?id=" var="removeCompany" />
+<c:url value="/getCompany?id=" var="getCompany" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +17,9 @@
 	<ul>
 		<c:forEach items="${companies}" var="company">
 			<li>
-				${company.name} <fmt:formatDate value="${company.opendate}" pattern="dd/MM/yyyy" />
+				${company.name} <fmt:formatDate value="${company.openDate}" pattern="dd/MM/yyyy" />
 				<a href="${removeCompany}${company.id}">remove</a>
+				<a href="${getCompany}${company.id}">edita</a>
 			</li>
 		</c:forEach>
 	</ul>

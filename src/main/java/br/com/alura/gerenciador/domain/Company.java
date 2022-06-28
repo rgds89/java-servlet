@@ -6,7 +6,7 @@ public class Company {
 	
 	private Long id;
 	private String name;
-	private Date opendate;
+	private Date openDate;
 	
 	public Long getId() {
 		return id;
@@ -20,11 +20,11 @@ public class Company {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getOpendate() {
-		return opendate;
+	public Date getOpenDate() {
+		return openDate;
 	}
-	public void setOpendate(Date opendate) {
-		this.opendate = opendate;
+	public void setOpenDate(Date openDate) {
+		this.openDate = openDate;
 	}
 	
 	
