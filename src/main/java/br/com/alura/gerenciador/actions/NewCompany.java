@@ -14,7 +14,7 @@ import br.com.alura.gerenciador.db.DataBase;
 import br.com.alura.gerenciador.domain.Company;
 
 public class NewCompany {
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		try {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			PrintWriter out = response.getWriter();
@@ -29,7 +29,7 @@ public class NewCompany {
 
 			database.add(company);
 
-			response.sendRedirect("control?action=listCompanies");
+			return "redirect:control?action=listCompanies";
 
 		} catch (ParseException e) {
 			throw new ServletException(e);

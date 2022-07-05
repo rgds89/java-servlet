@@ -13,7 +13,7 @@ import br.com.alura.gerenciador.db.DataBase;
 import br.com.alura.gerenciador.domain.Company;
 
 public class UpdateCompany {
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		try {
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Long id = Long.valueOf(request.getParameter("id"));
@@ -24,7 +24,8 @@ public class UpdateCompany {
 			Company company = dataBase.getCompanyById(id);
 			company.setName(name);
 			company.setOpenDate(openDate);
-			response.sendRedirect("control?action=listCompanies");
+			
+			return "redirect:control?action=listCompanies";
 			
 		} catch (ParseException e) {
 			throw new ServletException(e);

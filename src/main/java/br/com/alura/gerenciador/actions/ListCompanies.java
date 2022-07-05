@@ -13,12 +13,11 @@ import br.com.alura.gerenciador.domain.Company;
 
 public class ListCompanies {
 	
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DataBase dataBase = new DataBase();
 		List<Company> companies = dataBase.getCompanies();
 		request.setAttribute("companies", companies);
-		RequestDispatcher rd = request.getRequestDispatcher("/listCompanies.jsp");
-		rd.forward(request, response);
+		return "forward:/listCompanies.jsp";
 	}
 
 }

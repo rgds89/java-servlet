@@ -11,13 +11,11 @@ import br.com.alura.gerenciador.db.DataBase;
 import br.com.alura.gerenciador.domain.Company;
 
 public class GetCompany {
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Long id = Long.valueOf(request.getParameter("id"));
 		DataBase database = new DataBase();
-		Company company = database.getCompanyById(id);
-		RequestDispatcher rd = request.getRequestDispatcher("/updateCompany.jsp");
-		request.setAttribute("company", company);
-		rd.forward(request, response);
+		Company company = database.getCompanyById(id);		
+		request.setAttribute("company", company);		
+		return "forward:/updateCompany.jsp";
 	}
-
 }

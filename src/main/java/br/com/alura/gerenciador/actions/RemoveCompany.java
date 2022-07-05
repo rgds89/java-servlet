@@ -10,14 +10,14 @@ import br.com.alura.gerenciador.db.DataBase;
 public class RemoveCompany {
 	private long id;
 	
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		DataBase databse = new DataBase();
 
 		id = Long.valueOf(request.getParameter("id"));
 
 		databse.removeCompany(id);
 
-		response.sendRedirect("control?action=listCompanies");
+		return "redirect:control?action=listCompanies";
 	}
 
 }
