@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlets;
+package br.com.alura.gerenciador.actions;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,21 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.db.DataBase;
 import br.com.alura.gerenciador.domain.Company;
 
-//@WebServlet("/newCompany")
-public class NewCompanyServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+public class NewCompany {
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		try {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			PrintWriter out = response.getWriter();
@@ -35,13 +28,12 @@ public class NewCompanyServlet extends HttpServlet {
 			DataBase database = new DataBase();
 
 			database.add(company);
-			
-			response.sendRedirect("listCompanies");
+
+			response.sendRedirect("control?action=listCompanies");
 
 		} catch (ParseException e) {
 			throw new ServletException(e);
 		}
-
 	}
 
 }
