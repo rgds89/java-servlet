@@ -21,18 +21,7 @@ public class User {
 	}
 
 	public boolean isEquals(String login, String password) {
-
-		return login.equals(login) ? password.equals(password) ? true : false : false;
-
-//        if(!this.login.equals(login)) {
-//            return false;
-//        }
-//
-//        if(!this.password.equals(password)) {
-//            return false;
-//        }
-//
-//        return true;
+		return this.login.equals(login) ? this.password.equals(password) ? true : false : false;
 	}
 
 }

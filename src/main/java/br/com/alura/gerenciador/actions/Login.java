@@ -8,19 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.db.DataBase;
 
-public class Login implements Action{
+public class Login implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		
+
 		DataBase db = new DataBase();
-		
-		
-		return "redirect:control?action=ListCompanies";
+
+		if (db.existUser(login, password)) {
+			return "redirect:control?action=ListCompanies";
+		} else {
+			return "redirect:control?action=LoginForm";
+		}
 	}
 
 }

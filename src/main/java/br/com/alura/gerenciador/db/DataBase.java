@@ -13,12 +13,12 @@ public class DataBase {
 	private static List<Company> companies = new ArrayList<>();
 	private static List<User> users = new ArrayList<>();
 	private static Long sequentialKey = 1l;
-	
+
 	static {
 		User user1 = new User();
 		user1.setLogin("rogersilva");
 		user1.setPassword("roger1234");
-		
+
 		users.addAll(Arrays.asList(user1));
 	}
 
@@ -51,6 +51,15 @@ public class DataBase {
 			}
 		}
 		return null;
+	}
+
+	public Boolean existUser(String login, String password) {
+		for (User u : users) {
+			if (u.isEquals(login, password)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
