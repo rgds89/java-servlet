@@ -1,16 +1,26 @@
 package br.com.alura.gerenciador.db;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import br.com.alura.gerenciador.domain.Company;
+import br.com.alura.gerenciador.domain.User;
 
 public class DataBase {
 
 	private static List<Company> companies = new ArrayList<>();
+	private static List<User> users = new ArrayList<>();
 	private static Long sequentialKey = 1l;
+	
+	static {
+		User user1 = new User();
+		user1.setLogin("rogersilva");
+		user1.setPassword("roger1234");
+		
+		users.addAll(Arrays.asList(user1));
+	}
 
 	public void add(Company company) {
 		company.setId(DataBase.sequentialKey++);

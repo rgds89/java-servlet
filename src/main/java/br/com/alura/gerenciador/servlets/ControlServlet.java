@@ -31,8 +31,9 @@ public class ControlServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		action = request.getParameter("action");
-		
-		if(action == null) throw new ServletException("Null action");
+
+		if (action == null)
+			throw new ServletException("Null action");
 
 		try {
 			String nameClass = PATH_CLASS + action;
@@ -56,26 +57,5 @@ public class ControlServlet extends HttpServlet {
 		} catch (IllegalAccessException e) {
 			throw new ServletException(e);
 		}
-
-//		if (action.equals("listCompanies")) {
-//			ListCompanies actionListCompanies = new ListCompanies();
-//			regress = actionListCompanies.execute(request, response);
-//		}else if(action.equals("getCompany")){
-//			GetCompany actionGetCompany = new GetCompany();
-//			regress =actionGetCompany.execute(request, response);
-//		}else if(action.equals("removeCompany")){
-//			RemoveCompany actionRemoveCompany = new RemoveCompany();
-//			regress =actionRemoveCompany.execute(request, response);
-//		}else if(action.equals("newCompany")) {
-//			NewCompany actionNewCompany = new NewCompany();
-//			regress = actionNewCompany.execute(request, response);
-//		}else if(action.equals("updateCompany")) {
-//			UpdateCompany actionUpdateCompany = new UpdateCompany();
-//			regress = actionUpdateCompany.execute(request, response);
-//		}else if(action.equals("newCompanyForm")){
-//			NewCompanyForm actionCompanyForm = new NewCompanyForm();
-//			regress = actionCompanyForm.execute(request, response);
-//		}
-
 	}
 }
