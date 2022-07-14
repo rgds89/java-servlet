@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<c:url value="control?action=updateCompany" var="updateCompany" />
+<c:url value="control?action=UpdateCompany" var="updateCompany" />
 
 
 <!DOCTYPE html>

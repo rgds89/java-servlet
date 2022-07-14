@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.db.DataBase;
 import br.com.alura.gerenciador.domain.Company;
 
-public class ListCompanies {
+public class ListCompanies implements Action{
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DataBase dataBase = new DataBase();

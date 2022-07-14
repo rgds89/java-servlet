@@ -4,8 +4,8 @@
 	import="java.util.List, br.com.alura.gerenciador.domain.Company"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<c:url value="/control?action=removeCompany&id=" var="removeCompany" />
-<c:url value="/control?action=getCompany&id=" var="getCompany" />
+<c:url value="/control?action=RemoveCompany&id=" var="removeCompany" />
+<c:url value="/control?action=GetCompany&id=" var="getCompany" />
 <!DOCTYPE html>
 <html>
 <head>

@@ -36,7 +36,7 @@ public class NewCompanyServlet extends HttpServlet {
 
 			database.add(company);
 			
-			response.sendRedirect("listCompanies");
+			response.sendRedirect("ListCompanies");
 
 		} catch (ParseException e) {
 			throw new ServletException(e);
