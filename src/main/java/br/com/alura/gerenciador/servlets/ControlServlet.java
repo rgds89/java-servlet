@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.actions.GetCompany;
 import br.com.alura.gerenciador.actions.ListCompanies;
 import br.com.alura.gerenciador.actions.NewCompany;
+import br.com.alura.gerenciador.actions.NewCompanyForm;
 import br.com.alura.gerenciador.actions.RemoveCompany;
 import br.com.alura.gerenciador.actions.UpdateCompany;
 
 @WebServlet("/control")
 public class ControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static String PATH_JSP="WEB-INF/views";
 	private String action;
 	private String regress;
 	private String form;
@@ -43,13 +45,16 @@ public class ControlServlet extends HttpServlet {
 		}else if(action.equals("updateCompany")) {
 			UpdateCompany actionUpdateCompany = new UpdateCompany();
 			regress = actionUpdateCompany.execute(request, response);
+		}else if(action.equals("newCompanyForm")){
+			NewCompanyForm actionCompanyForm = new NewCompanyForm();
+			regress = actionCompanyForm.execute(request, response);
 		}
 		
 		parts = regress.split(":");
 		type = parts[0];
 		form = parts[1];
 		if(type.equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher(form);
+			RequestDispatcher rd = request.getRequestDispatcher(PATH_JSP + form);
 			rd.forward(request, response);
 		}else {
 			response.sendRedirect(form);
