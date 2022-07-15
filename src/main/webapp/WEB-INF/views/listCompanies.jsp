@@ -13,7 +13,14 @@
 <title>Java Standard Taglib</title>
 </head>
 <body>
-	<h4>Lista de sempresas:</h4>
+	Usuario Logado: ${user.login} <br />
+	
+	
+	<c:if test="${not empty empresa}">
+		Empresa ${empresa} cadastrada com sucesso!
+	</c:if>
+	
+	<h4>Lista de sempresas:</h4> <br />
 	<ul>
 		<c:forEach items="${companies}" var="company">
 			<li>

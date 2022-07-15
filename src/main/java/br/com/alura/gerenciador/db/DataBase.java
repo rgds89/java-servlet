@@ -53,13 +53,13 @@ public class DataBase {
 		return null;
 	}
 
-	public Boolean existUser(String login, String password) {
+	public User existUser(String login, String password) {
 		for (User u : users) {
 			if (u.isEquals(login, password)) {
-				return true;
+				return u;
 			}
 		}
-		return false;
+		return null;
 	}
 
 }
