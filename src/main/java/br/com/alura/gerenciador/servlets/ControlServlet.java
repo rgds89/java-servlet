@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.actions.Action;
 import br.com.alura.gerenciador.actions.GetCompany;
@@ -30,12 +31,21 @@ public class ControlServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		action = request.getParameter("action");
-
-		if (action == null)
-			throw new ServletException("Null action");
 
 		try {
+			action = request.getParameter("action");
+
+			HttpSession session = request.getSession();
+			boolean itsAProtectedAction = !(action.equals("Login") || action.equals("LoginForm"));
+
+			if (action == null)
+				throw new ServletException("Null action");
+
+			if(itsAProtectedAction && session.getAttribute("user") == null) {
+				response.sendRedirect("control?action=LoginForm");
+				return;
+			}
+
 			String nameClass = PATH_CLASS + action;
 			Class typeClass = Class.forName(nameClass);
 			Action actions = (Action) typeClass.newInstance();
