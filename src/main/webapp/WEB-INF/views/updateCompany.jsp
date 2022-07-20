@@ -4,10 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:url value="control?action=UpdateCompany" var="updateCompany" />
 
-
 <!DOCTYPE html>
 <html>
 <body>
+	<c:import url="logout.jsp"></c:import>
 	<form action="${updateCompany}" method="post">
 		<input type="hidden" name="id" value="${company.id}" /> Name: <input
 			type="text" name="nameCompany" value="${company.name}" /> Open Date:

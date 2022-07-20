@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:import url="logout.jsp"></c:import>
 	<form action="${newCompany}" method="post">
 	Name: <input type="text" name="nameCompany"/>
 	Open Date: <input type="date" name="openDate"/>
 	<input type="submit"/>
 	</form>
-
 </body>
 </html>
