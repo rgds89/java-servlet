@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlets;
+package br.com.alura.gerenciador.servlets.filters;
 
 import java.io.IOException;
 

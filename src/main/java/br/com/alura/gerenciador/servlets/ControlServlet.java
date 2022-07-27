@@ -35,17 +35,6 @@ public class ControlServlet extends HttpServlet {
 		try {
 			action = request.getParameter("action");
 
-			HttpSession session = request.getSession();
-			boolean itsAProtectedAction = !(action.equals("Login") || action.equals("LoginForm"));
-
-			if (action == null)
-				throw new ServletException("Null action");
-
-			if(itsAProtectedAction && session.getAttribute("user") == null) {
-				response.sendRedirect("control?action=LoginForm");
-				return;
-			}
-
 			String nameClass = PATH_CLASS + action;
 			Class typeClass = Class.forName(nameClass);
 			Action actions = (Action) typeClass.newInstance();
