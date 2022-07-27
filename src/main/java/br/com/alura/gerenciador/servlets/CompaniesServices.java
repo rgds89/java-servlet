@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.thoughtworks.xstream.XStream;
 
 import br.com.alura.gerenciador.domain.Company;
 import br.com.alura.gerenciador.db.DataBase;
@@ -21,11 +22,18 @@ public class CompaniesServices extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Company> companies = new DataBase().getCompanies();
 		
-		Gson gson = new Gson();
-		String json = gson.toJson(companies);
+		XStream xstream = new XStream();
+		xstream.alias("company", Company.class);
+		String xml = xstream.toXML(companies);
 		
-		response.setContentType("application/json");
-		response.getWriter().print(json);
+		response.setContentType("application/xml");
+		response.getWriter().print(xml);
+		
+//		Gson gson = new Gson();
+//		String json = gson.toJson(companies);
+//		
+//		response.setContentType("application/json");
+//		response.getWriter().print(json);
 	}
 
 }
