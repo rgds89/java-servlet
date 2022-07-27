@@ -1,18 +1,23 @@
-package br.com.alura.gerenciador.servlets;
+package br.com.alura.gerenciador.servlets.filters;
 
 import java.io.IOException;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.actions.Action;
 
-//@WebServlet("/control")
-public class ControlServlet extends HttpServlet {
+//@WebFilter("/control")
+public class FilterControl extends HttpFilter implements Filter {
+
 	private static final long serialVersionUID = 1L;
 	private static String PATH_JSP = "WEB-INF/views";
 	private static String PATH_CLASS = "br.com.alura.gerenciador.actions.";
@@ -22,8 +27,12 @@ public class ControlServlet extends HttpServlet {
 	private String type;
 	private String[] parts;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@SuppressWarnings("unused")
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
+			throws IOException, ServletException {
+		System.out.println("FilterControl");
+		HttpServletRequest request = (HttpServletRequest) servletRequest;
+		HttpServletResponse response = (HttpServletResponse) servletResponse;
 
 		try {
 			action = request.getParameter("action");

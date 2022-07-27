@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class FilterAuthorization
  */
-@WebFilter("/control")
+//@WebFilter("/control")
 public class FilterAuthorization extends HttpFilter implements Filter {
        
 	private static final long serialVersionUID = 1L;
