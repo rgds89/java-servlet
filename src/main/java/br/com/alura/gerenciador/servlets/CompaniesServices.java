@@ -19,21 +19,31 @@ import br.com.alura.gerenciador.db.DataBase;
 public class CompaniesServices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		List<Company> companies = new DataBase().getCompanies();
-		
-		XStream xstream = new XStream();
-		xstream.alias("company", Company.class);
-		String xml = xstream.toXML(companies);
-		
-		response.setContentType("application/xml");
-		response.getWriter().print(xml);
-		
-//		Gson gson = new Gson();
-//		String json = gson.toJson(companies);
-//		
-//		response.setContentType("application/json");
-//		response.getWriter().print(json);
+
+		String contentType = request.getHeader("accept");
+
+		if (contentType.equals("application/json")) {
+			Gson gson = new Gson();
+			String json = gson.toJson(companies);
+
+			response.setContentType("application/json");
+			response.getWriter().print(json);
+			
+		} else if (contentType.equals("application/xml")) {
+			XStream xstream = new XStream();
+			xstream.alias("company", Company.class);
+			String xml = xstream.toXML(companies);
+
+			response.setContentType("application/xml");
+			response.getWriter().print(xml);
+		}else {
+			response.setContentType("application/json");
+			response.getWriter().print("{'message': 'no content'}");
+		}
+
 	}
 
 }
