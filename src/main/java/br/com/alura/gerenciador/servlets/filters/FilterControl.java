@@ -4,19 +4,18 @@ import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.actions.Action;
 
 //@WebFilter("/control")
-public class FilterControl extends HttpFilter implements Filter {
+public class FilterControl implements Filter {
 
 	private static final long serialVersionUID = 1L;
 	private static String PATH_JSP = "WEB-INF/views";
@@ -26,6 +25,18 @@ public class FilterControl extends HttpFilter implements Filter {
 	private String form;
 	private String type;
 	private String[] parts;
+	
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// TODO Auto-generated method stub
+		Filter.super.init(filterConfig);
+	}
+	
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		Filter.super.destroy();
+	}
 
 	@SuppressWarnings("unused")
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
